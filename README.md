@@ -9,7 +9,7 @@ A responsive typing game made with plain HTML5, CSS3 and JavaScript (ES6+). No l
 Open `index.html` in any browser. Works on desktop and mobile (bubbles and on-screen keys are tappable).
 
 ## Demo video
-<!-- Paste your Drive / YouTube link here -->
+ https://drive.google.com/file/d/1sNdENXAW1sNWZ4gr7Pp5ZQMNCn_mB8WB/view?usp=drive_linkDrive
 
 ## Modes
 

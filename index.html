@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typing Challenge | Bubbles and KeyMagnet</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<main class="app">
+
+  <!-- ============ HOME SCREEN ============ -->
+  <section id="home" class="screen">
+    <header class="hero">
+      <h1>Typing Challenge</h1>
+      <p>Two games that train your fingers. Pick a mode, choose a difficulty and start typing.</p>
+    </header>
+
+    <div class="mode-grid">
+
+      <!-- Mode A -->
+      <article class="card" id="card-bubbles">
+        <h2>Bubbles</h2>
+        <p class="subtitle">Letter recognition</p>
+        <p>Bubbles with letters float up from the bottom. Press the matching key to pop each one before it touches the top line.</p>
+
+        <fieldset class="levels">
+          <legend>Difficulty</legend>
+          <label><input type="radio" name="diff-bubbles" value="easy" checked><span>Easy</span></label>
+          <label><input type="radio" name="diff-bubbles" value="medium"><span>Medium</span></label>
+          <label><input type="radio" name="diff-bubbles" value="hard"><span>Hard</span></label>
+        </fieldset>
+        <p class="blurb" id="blurb-bubbles"></p>
+
+        <button class="btn primary" id="start-bubbles" type="button">Start Bubbles</button>
+      </article>
+
+      <!-- Mode B -->
+      <article class="card" id="card-magnet">
+        <h2>KeyMagnet</h2>
+        <p class="subtitle">Keyboard precision</p>
+        <p>A target key appears on a big keycap. Find it on the keyboard and press it as fast and as accurately as you can.</p>
+
+        <fieldset class="levels">
+          <legend>Difficulty</legend>
+          <label><input type="radio" name="diff-magnet" value="easy" checked><span>Easy</span></label>
+          <label><input type="radio" name="diff-magnet" value="medium"><span>Medium</span></label>
+          <label><input type="radio" name="diff-magnet" value="hard"><span>Hard</span></label>
+        </fieldset>
+
+        <label class="field" for="keyset">Key set
+          <select id="keyset">
+            <option value="home" selected>Home row (A S D F J K L)</option>
+            <option value="top">Top row (Q to P)</option>
+            <option value="bottom">Bottom row (Z to M)</option>
+            <option value="all">All letters (A to Z)</option>
+          </select>
+        </label>
+        <p class="blurb" id="blurb-magnet"></p>
+
+        <button class="btn primary" id="start-magnet" type="button">Start KeyMagnet</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ GAME SCREEN ============ -->
+  <section id="game" class="screen hidden" data-mode="bubbles">
+    <div class="gamebar">
+      <button class="btn small" id="btnHome" type="button">Home</button>
+      <h2 id="gameTitle">Bubbles</h2>
+      <div class="controls">
+        <button class="btn small" id="btnRestart" type="button">Restart</button>
+        <button class="btn small" id="btnReset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="status" id="status" aria-live="off">
+      <div class="chip score"><span>Score</span><strong id="st-score">0</strong></div>
+
+      <div class="chip only-bubbles"><span>Misses</span><strong id="st-misses">0 / 6</strong></div>
+      <div class="chip only-bubbles"><span>Level</span><strong id="st-level">1</strong></div>
+      <div class="chip only-bubbles"><span>Popped</span><strong id="st-popped">0</strong></div>
+      <div class="chip only-bubbles"><span>Wrong keys</span><strong id="st-wrong">0</strong></div>
+
+      <div class="chip only-magnet"><span>Time left</span><strong id="st-time">60s</strong></div>
+      <div class="chip only-magnet"><span>Correct</span><strong id="st-correct">0</strong></div>
+      <div class="chip only-magnet"><span>Incorrect</span><strong id="st-incorrect">0</strong></div>
+      <div class="chip only-magnet"><span>Avg time</span><strong id="st-avg">-</strong></div>
+      <div class="chip only-magnet"><span>Key set</span><strong id="st-keyset">-</strong></div>
+
+      <div class="chip"><span>Difficulty</span><strong id="st-diff">Easy</strong></div>
+    </div>
+
+    <div class="stage" id="stage">
+      <!-- Mode A arena -->
+      <div class="arena" id="arena" aria-label="Bubble arena"></div>
+
+      <!-- Mode B panel -->
+      <div class="magnet" id="magnet">
+        <div class="target-wrap">
+          <div class="keycap" id="targetKey" aria-live="polite">?</div>
+          <div class="target-bar" id="targetBar"><i id="targetFill"></i></div>
+          <p class="feedback" id="feedback" aria-live="polite">Press the key shown on the keycap</p>
+        </div>
+        <div class="keyboard" id="keyboard" aria-label="On-screen keyboard"></div>
+      </div>
+
+      <!-- Ready / results overlay -->
+      <div class="overlay hidden" id="overlay"></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    CSC336 Web Technologies, Lab Mid, Fall 2026. Built by Muhammad Shoaib (FA24-BSE-116).
+  </footer>
+</main>
+</body>
+</html>
